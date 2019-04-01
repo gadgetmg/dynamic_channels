@@ -59,9 +59,7 @@ sudo systemctl start dynamic_channels
 
 1. Create a named feature branch (i.e. `add-feature`)
 2. Write your change
-3. Write tests for your change (if applicable)
-4. Run the tests, ensuring they all pass
-5. Submit a Pull Request
+3. Submit a Pull Request
 
 ## License and Authors
 
