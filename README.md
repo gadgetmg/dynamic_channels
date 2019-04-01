@@ -16,12 +16,12 @@ python3 -m pip install -U git+https://github.com/Rapptz/discord.py
 
 ## Permissions
 
-The bot needs only the **Manage Channels** permissionr. On private channels, it
+The bot needs only the **Manage Channels** permission. On private channels, it
 must also have the **Connect** permission explicitly granted.
 
 ## Usage
 
-Run the bot's script with the `python3` command specifing the bot's API key as
+Run the bot's script with the `python3` command specifying the bot's API key as
 an environment variable.
 
 ```bash
@@ -61,7 +61,7 @@ sudo systemctl start dynamic_channels
 2. Write your change
 3. Write tests for your change (if applicable)
 4. Run the tests, ensuring they all pass
-5. Submit a Merge Request
+5. Submit a Pull Request
 
 ## License and Authors
 
