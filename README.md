@@ -5,6 +5,8 @@ This bot manages dynamic groups of voice channels in a Discord server.
 On channels named in the format of `Name Number` the bot will automatically
 create and delete channels as members join and leave them.
 
+![](https://media.giphy.com/media/1Qjyn0ZXkjq3N9Zf2T/giphy.gif)
+
 ## Requirements
 
 The script requires the latest version of the `discord.py` module. This module
