@@ -23,25 +23,30 @@ class Bot(discord.Client):
         if before.channel == after.channel:
             return
 
-        # Channel just joined
-        if after.channel and re.match("^.* [0-9]*$", after.channel.name):
-            # Add a channel if this was the first member
-            if len(after.channel.members) == 1:
-                channel = await member.guild.create_voice_channel(
-                    # Create with all the attributes from the current channel
-                    name=get_basename(after.channel) + " " + str(get_iteration(after.channel) + 1),
-                    overwrites=dict(after.channel.overwrites),
-                    category=after.channel.category,
-                    position=after.channel.position,
-                    bitrate=after.channel.bitrate,
-                    user_limit=after.channel.user_limit
-                )
-            # In some cases, the API won't respect the position of the new channel
+        # Channel just joined by the first member
+        if after.channel and re.match("^.* [0-9]*$", after.channel.name) and len(after.channel.members) == 1:
+            # Add a new channel
+            channel = await member.guild.create_voice_channel(
+                # Create with all the attributes from the current channel
+                name=get_basename(after.channel) + " " + str(get_iteration(after.channel) + 1),
+                overwrites=dict(after.channel.overwrites),
+                category=after.channel.category,
+                position=after.channel.position,
+                bitrate=after.channel.bitrate,
+                user_limit=after.channel.user_limit
+            )
+            # In some cases (position 0), the API won't respect the position of the new channel
             if channel.position != after.channel.position:
                 await channel.edit(
                     # When editing, position has to be 1 greater
                     position=after.channel.position + 1
                 )
+            # Renumber the position of voice channels as Discord doesn't respect its own documentation
+            for i, channel in enumerate(member.guild.voice_channels):
+                if channel.position != i:
+                    await channel.edit(
+                        position = i
+                    )
 
         # Channel just left
         if before.channel and re.match("^.* [0-9]*$", before.channel.name):
