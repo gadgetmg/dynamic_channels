@@ -9,11 +9,10 @@ create and delete channels as members join and leave them.
 
 ## Requirements
 
-The script requires the latest version of the `discord.py` module. This module
-is still in development and must be installed from its git repo:
+The script requires the 1.0 or newer version of the `discord.py` module.
 
 ```
-python3 -m pip install -U git+https://github.com/Rapptz/discord.py
+python3 -m pip install -U discord.py
 ```
 
 ## Permissions
